@@ -80,7 +80,7 @@ const CASES = [
     color: '#EA4335',
   },
   {
-    client: 'NorthLink',
+    client: 'Undisclosed',
     category: 'B2B · SaaS · HR Tech',
     tag: 'SEO + Content',
     headline: '340% more organic traffic. CAC dropped 48%.',
