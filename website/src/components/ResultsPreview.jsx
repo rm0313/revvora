@@ -1,7 +1,34 @@
-import React from 'react';
 import { motion } from 'framer-motion';
+import nemoCloud from '../assets/nemo-cloud.webp';
+import oneVision from '../assets/one-vision.webp';
 
 const CASES = [
+  {
+    client: 'Nemo Cloud',
+    category: 'B2B · SaaS · Cloud Infrastructure',
+    challenge: 'No paid acquisition engine. Needed a full-funnel build from scratch — landing pages, ads, and lead gen — targeting enterprise buyers.',
+    stats: [
+      { label: 'Demo Requests', value: '3.2×' },
+      { label: 'CPL Reduced', value: '44%' },
+      { label: 'MQL → SQL Rate', value: '38%' },
+    ],
+    color: '#EA4335',
+    image: nemoCloud,
+    tag: 'Web Design + Paid Ads',
+  },
+  {
+    client: 'One Vision',
+    category: 'B2B · Consulting · Growth',
+    challenge: 'Commoditized market with no clear positioning. Needed brand clarity, a new site, and an outbound system that converted cold traffic.',
+    stats: [
+      { label: 'Conversion Rate', value: '6.1%' },
+      { label: 'Pipeline Generated', value: '$480K' },
+      { label: 'CAC Improvement', value: '61%' },
+    ],
+    color: '#1777AB',
+    image: oneVision,
+    tag: 'Brand + Web + Ads',
+  },
   {
     client: 'Paalm',
     category: 'Ecommerce · Cosmetics',
@@ -12,6 +39,8 @@ const CASES = [
       { label: 'Total Purchases', value: '1,100+' },
     ],
     color: '#EA4335',
+    image: null,
+    tag: 'Paid Ads',
   },
   {
     client: 'Wander Nana',
@@ -23,83 +52,247 @@ const CASES = [
       { label: 'Meta Link Clicks', value: '127K' },
     ],
     color: '#1777AB',
+    image: null,
+    tag: 'Paid Social',
   },
   {
     client: 'GCG Media',
     category: 'B2B · Digital Agency',
-    challenge: 'Educational curve. Market didn\'t understand the offer. Conversion rate stuck at 1.55%.',
+    challenge: "Educational curve. Market didn't understand the offer. Conversion rate stuck at 1.55%.",
     stats: [
       { label: 'Conversion Rate', value: '8.33%' },
       { label: 'CPA Reduced', value: '56%' },
       { label: 'From → To CVR', value: '1.55→8.33' },
     ],
     color: '#EA4335',
+    image: null,
+    tag: 'Paid Ads + CRO',
   },
 ];
 
-export default function ResultsPreview() {
+function ImageCard({ c, i }) {
   return (
-    <section>
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: i * 0.1 }}
+      style={{
+        position: 'relative',
+        borderRadius: 16,
+        overflow: 'hidden',
+        border: '1px solid rgba(255,255,255,0.06)',
+        background: '#0a0a0a',
+        display: 'grid',
+        gridTemplateColumns: i % 2 === 0 ? '1.4fr 1fr' : '1fr 1.4fr',
+        minHeight: 480,
+      }}
+    >
+      {/* Image side */}
+      <div
+        style={{
+          order: i % 2 === 0 ? 0 : 1,
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        <img
+          src={c.image}
+          alt={c.client}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'top',
+            display: 'block',
+            transition: 'transform 0.6s ease',
+          }}
+          onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.03)')}
+          onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
+        />
+        {/* Gradient overlay */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: i % 2 === 0
+            ? 'linear-gradient(to right, transparent 60%, #0a0a0a)'
+            : 'linear-gradient(to left, transparent 60%, #0a0a0a)',
+        }} />
+        {/* Tag badge */}
+        <div style={{
+          position: 'absolute',
+          top: 20,
+          left: 20,
+          background: 'rgba(0,0,0,0.7)',
+          backdropFilter: 'blur(12px)',
+          border: `1px solid ${c.color}44`,
+          borderRadius: 100,
+          padding: '6px 14px',
+          fontSize: 11,
+          fontWeight: 700,
+          letterSpacing: '0.06em',
+          textTransform: 'uppercase',
+          color: c.color,
+        }}>
+          {c.tag}
+        </div>
+      </div>
+
+      {/* Content side */}
+      <div style={{
+        order: i % 2 === 0 ? 1 : 0,
+        padding: '52px 48px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        gap: 0,
+      }}>
+        {/* Accent line */}
+        <div style={{ width: 32, height: 3, background: c.color, borderRadius: 2, marginBottom: 24 }} />
+
+        <p style={{ fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', fontWeight: 600, marginBottom: 10 }}>
+          {c.category}
+        </p>
+        <h3 style={{ fontSize: 'clamp(30px,3vw,48px)', fontWeight: 900, color: '#fff', letterSpacing: '-0.03em', marginBottom: 20, lineHeight: 1.05 }}>
+          {c.client}
+        </h3>
+        <p style={{ fontSize: 14, color: 'var(--text-muted)', lineHeight: 1.75, marginBottom: 40, maxWidth: 340 }}>
+          <strong style={{ color: 'var(--text-dim)' }}>The challenge: </strong>{c.challenge}
+        </p>
+
+        {/* Stats */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 0, borderTop: '1px solid var(--border)' }}>
+          {c.stats.map((st, si) => (
+            <div key={si} style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: '18px 0',
+              borderBottom: '1px solid var(--border)',
+            }}>
+              <span style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 600, letterSpacing: '0.02em' }}>{st.label}</span>
+              <span style={{ fontFamily: 'Raleway', fontSize: 28, fontWeight: 900, color: c.color, letterSpacing: '-0.04em' }}>{st.value}</span>
+            </div>
+          ))}
+        </div>
+
+        <button className="btn-outline" style={{ fontSize: 12, padding: '10px 20px', marginTop: 32, alignSelf: 'flex-start' }}>
+          Full Case Study
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </motion.div>
+  );
+}
+
+function MetricCard({ c, i }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: i * 0.08 }}
+      style={{
+        background: '#0a0a0a',
+        border: '1px solid rgba(255,255,255,0.06)',
+        borderRadius: 12,
+        padding: '36px 36px',
+        position: 'relative',
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
+      {/* Top accent */}
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: `linear-gradient(90deg, ${c.color}, transparent)` }} />
+
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 28 }}>
+        <div>
+          <p style={{ fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', fontWeight: 600, marginBottom: 6 }}>
+            {c.category}
+          </p>
+          <h3 style={{ fontSize: 26, fontWeight: 900, color: '#fff', letterSpacing: '-0.03em' }}>{c.client}</h3>
+        </div>
+        <span style={{
+          fontSize: 10,
+          fontWeight: 700,
+          letterSpacing: '0.06em',
+          textTransform: 'uppercase',
+          color: c.color,
+          background: `${c.color}14`,
+          border: `1px solid ${c.color}33`,
+          borderRadius: 100,
+          padding: '5px 12px',
+          whiteSpace: 'nowrap',
+        }}>
+          {c.tag}
+        </span>
+      </div>
+
+      <p style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: 28 }}>
+        <strong style={{ color: 'var(--text-dim)' }}>Challenge: </strong>{c.challenge}
+      </p>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 0, borderTop: '1px solid var(--border)', marginTop: 'auto' }}>
+        {c.stats.map((st, si) => (
+          <div key={si} style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            padding: '14px 0',
+            borderBottom: si < c.stats.length - 1 ? '1px solid var(--border)' : 'none',
+          }}>
+            <span style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 600 }}>{st.label}</span>
+            <span style={{ fontFamily: 'Raleway', fontSize: 24, fontWeight: 900, color: c.color, letterSpacing: '-0.04em' }}>{st.value}</span>
+          </div>
+        ))}
+      </div>
+    </motion.div>
+  );
+}
+
+export default function ResultsPreview() {
+  const imageCases = CASES.filter(c => c.image);
+  const metricCases = CASES.filter(c => !c.image);
+
+  return (
+    <section style={{ padding: '120px 0' }}>
       <div className="container">
+
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          style={{ textAlign: 'center', marginBottom: 72 }}
+          style={{ marginBottom: 80 }}
         >
-          <p style={{ fontSize: 12, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 700, marginBottom: 16 }}>Case Studies</p>
-          <h2 style={{ fontSize: 'clamp(36px,5vw,68px)', fontWeight: 900, color: '#fff', lineHeight: 1.05, marginBottom: 20 }}>
-            We only take on clients we're confident we can grow.
-          </h2>
-          <p style={{ fontSize: 16, color: 'var(--text-muted)', maxWidth: 480, margin: '0 auto' }}>These are the numbers. Unrounded.</p>
+          <p style={{ fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 700, marginBottom: 16 }}>
+            Case Studies
+          </p>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 32, flexWrap: 'wrap' }}>
+            <h2 style={{ fontSize: 'clamp(36px,5vw,64px)', fontWeight: 900, color: '#fff', lineHeight: 1.05, letterSpacing: '-0.04em', maxWidth: 640 }}>
+              We only take on clients<br />we're confident we can grow.
+            </h2>
+            <p style={{ fontSize: 15, color: 'var(--text-muted)', maxWidth: 300, lineHeight: 1.7, paddingBottom: 8 }}>
+              These are the numbers. Unrounded. Every result below came from a client who trusted us with their growth.
+            </p>
+          </div>
         </motion.div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 2, background: 'var(--border)' }}>
-          {CASES.map((c, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              style={{
-                background: 'var(--bg)',
-                padding: '56px 48px',
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: 48,
-                alignItems: 'center',
-                position: 'relative',
-                overflow: 'hidden',
-                cursor: 'pointer',
-                transition: 'background 0.3s',
-              }}
-              whileHover={{ background: '#0f0f0f' }}
-            >
-              {/* Accent line */}
-              <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 3, background: c.color }} />
-
-              <div style={{ paddingLeft: 24 }}>
-                <span style={{ fontSize: 11, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-muted)', fontWeight: 600 }}>{c.category}</span>
-                <h3 style={{ fontSize: 'clamp(28px,3vw,44px)', fontWeight: 900, color: '#fff', marginTop: 8, marginBottom: 16, letterSpacing: '-0.03em' }}>{c.client}</h3>
-                <p style={{ fontSize: 15, color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: 28 }}><strong style={{ color: 'var(--text-dim)' }}>Their Problem: </strong>{c.challenge}</p>
-                <button className="btn-outline" style={{ fontSize: 13, padding: '10px 22px' }}>
-                  View Case Study
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </button>
-              </div>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-                {c.stats.map((st, si) => (
-                  <div key={si} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: 24, borderBottom: si < c.stats.length - 1 ? '1px solid var(--border)' : 'none' }}>
-                    <span style={{ fontSize: 13, color: 'var(--text-muted)', fontWeight: 600 }}>{st.label}</span>
-                    <span style={{ fontFamily: 'Raleway', fontSize: 32, fontWeight: 900, color: c.color, letterSpacing: '-0.04em' }}>{st.value}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+        {/* Featured image case studies */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginBottom: 16 }}>
+          {imageCases.map((c, i) => (
+            <ImageCard key={c.client} c={c} i={i} />
           ))}
         </div>
+
+        {/* Metrics-only case studies */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 16 }}>
+          {metricCases.map((c, i) => (
+            <MetricCard key={c.client} c={c} i={i} />
+          ))}
+        </div>
+
       </div>
     </section>
   );
