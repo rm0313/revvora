@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const SERVICES = [
-  { name: 'SEO', desc: 'Organic rankings that keep bringing buyers to you — long after you stop running ads', detail: 'Technical SEO, on-page, local, and content strategy. We fix what stops Google from indexing you, then make every page work harder for rankings and conversions.' },
-  { name: 'AI SEO', desc: 'Built for Google AI Overviews, Perplexity, and ChatGPT — where buyers are searching right now', detail: 'We optimize for Google AI Overviews, Perplexity, and ChatGPT citations. Schema, entity authority, answer engine optimization. Built for 2025 and beyond.' },
-  { name: 'Link Building', desc: 'Quality backlinks that build authority and move rankings', detail: 'Editorial placements. Digital PR. Niche-relevant outreach. Zero PBNs, zero link farms. Only links that compound over time.' },
-  { name: 'PPC', desc: 'Ad spend that returns more than it costs', detail: 'Google Search Ads, Performance Max, Remarketing. Built to convert, not just click. We managed $4,598 in ad spend and generated 337 conversions for Paalm.' },
-  { name: 'Social Media Ads', desc: 'Paid social that generates leads, not just likes', detail: 'Meta, Snapchat, LinkedIn, TikTok. Full-funnel: awareness to conversion. Rigorous A/B testing. Wander Nana scaled 300% daily spend while maintaining 2.84 ROAS.' },
-  { name: 'CRM & Automations', desc: 'The lead came in. Now what? We build the system that turns it into a customer.', detail: 'CRM setup, lead scoring, email/SMS automation, pipeline reporting. The gap between a lead and a customer is a system. We build it.' },
-  { name: 'CRO', desc: 'Most agencies stop at the click. We fix the page that kills the sale.', detail: 'Landing page audits, A/B testing, heatmaps, funnel analysis. We find where prospects drop off and remove every reason not to convert.' },
-  { name: 'Programmatic Ads', desc: 'Data-driven ad buying at scale — display, video, and native, fully automated.', detail: 'Audience targeting, real-time bidding, creative rotation across display, video, and native placements. Built to reach buyers at every stage — without waste.' },
+  { name: 'SEO', slug: 'seo', desc: 'Organic rankings that keep bringing buyers to you — long after you stop running ads', detail: 'Technical SEO, on-page, local, and content strategy. We fix what stops Google from indexing you, then make every page work harder for rankings and conversions.' },
+  { name: 'AI SEO', slug: 'ai-seo', desc: 'Built for Google AI Overviews, Perplexity, and ChatGPT — where buyers are searching right now', detail: 'We optimize for Google AI Overviews, Perplexity, and ChatGPT citations. Schema, entity authority, answer engine optimization. Built for 2025 and beyond.' },
+  { name: 'Link Building', slug: 'link-building', desc: 'Quality backlinks that build authority and move rankings', detail: 'Editorial placements. Digital PR. Niche-relevant outreach. Zero PBNs, zero link farms. Only links that compound over time.' },
+  { name: 'PPC', slug: 'ppc', desc: 'Ad spend that returns more than it costs', detail: 'Google Search Ads, Performance Max, Remarketing. Built to convert, not just click. We managed $4,598 in ad spend and generated 337 conversions for Paalm.' },
+  { name: 'Social Media Ads', slug: 'social-media-ads', desc: 'Paid social that generates leads, not just likes', detail: 'Meta, Snapchat, LinkedIn, TikTok. Full-funnel: awareness to conversion. Rigorous A/B testing. Wander Nana scaled 300% daily spend while maintaining 2.84 ROAS.' },
+  { name: 'CRM & Automations', slug: 'crm-automations', desc: 'The lead came in. Now what? We build the system that turns it into a customer.', detail: 'CRM setup, lead scoring, email/SMS automation, pipeline reporting. The gap between a lead and a customer is a system. We build it.' },
+  { name: 'CRO', slug: 'cro', desc: 'Most agencies stop at the click. We fix the page that kills the sale.', detail: 'Landing page audits, A/B testing, heatmaps, funnel analysis. We find where prospects drop off and remove every reason not to convert.' },
+  { name: 'Programmatic Ads', slug: 'programmatic-ads', desc: 'Data-driven ad buying at scale — display, video, and native, fully automated.', detail: 'Audience targeting, real-time bidding, creative rotation across display, video, and native placements. Built to reach buyers at every stage — without waste.' },
 ];
 
 export default function CoreServices() {
@@ -68,6 +69,11 @@ export default function CoreServices() {
                     style={{ overflow: 'hidden' }}
                   >
                     <p style={{ fontSize: 13, color: 'var(--text-dim)', lineHeight: 1.7, marginTop: 16, paddingTop: 16, borderTop: '1px solid var(--border)' }}>{s.detail}</p>
+                    <Link to={`/services/${s.slug}`} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 700, color: 'var(--primary)', letterSpacing: '0.04em', textTransform: 'uppercase', marginTop: 16 }}
+                      onClick={e => e.stopPropagation()}>
+                      View Service
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </Link>
                   </motion.div>
                 )}
               </AnimatePresence>
