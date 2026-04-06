@@ -99,7 +99,7 @@ export default function ResultsPreview() {
   const c = CASES[active];
 
   return (
-    <section style={{ padding: '120px 0', overflow: 'hidden' }}>
+    <section id="results" style={{ padding: '120px 0', overflow: 'hidden' }}>
       <div className="container">
 
         {/* Header */}

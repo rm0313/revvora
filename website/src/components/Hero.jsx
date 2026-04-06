@@ -1,4 +1,3 @@
-import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 // Floating orb
@@ -99,9 +98,9 @@ export default function Hero() {
             Get My Free Revenue Audit — No Commitment
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
-          <button className="btn-outline" style={{ padding: '16px 32px' }}>
+          <a href="#results" className="btn-outline" style={{ padding: '16px 32px', display: 'inline-flex', alignItems: 'center' }}>
             See Real Client Results
-          </button>
+          </a>
         </motion.div>
 
         {/* Scroll indicator */}
