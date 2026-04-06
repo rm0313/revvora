@@ -11,7 +11,13 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const links = ['Services', 'Who We Serve', 'Results', 'Pricing', 'About'];
+  const links = [
+    { label: 'Services', href: '#services' },
+    { label: 'Who We Serve', href: '#who-we-serve' },
+    { label: 'Results', href: '#results' },
+    { label: 'Pricing', href: '#pricing' },
+    { label: 'About', href: '#about' },
+  ];
 
   return (
     <motion.header
@@ -36,14 +42,14 @@ export default function Header() {
       {/* Desktop Nav */}
       <nav style={{ display: 'flex', gap: 32, alignItems: 'center' }} className="desktop-nav">
         {links.map(l => (
-          <a key={l} href="#" style={{
+          <a key={l.label} href={l.href} style={{
             fontSize: 13, fontWeight: 600, color: 'var(--text-muted)',
             letterSpacing: '0.04em', textTransform: 'uppercase',
             transition: 'color 0.2s',
           }}
           onMouseEnter={e => e.target.style.color = '#fff'}
           onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}
-          >{l}</a>
+          >{l.label}</a>
         ))}
       </nav>
 
