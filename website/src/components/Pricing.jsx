@@ -26,7 +26,7 @@ const PLANS = [
 
 export default function Pricing() {
   return (
-    <section style={{ background: 'var(--bg-2)', overflow: 'hidden' }}>
+    <section id="pricing" style={{ background: 'var(--bg-2)', overflow: 'hidden' }}>
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

@@ -16,7 +16,7 @@ export default function CoreServices() {
   const [active, setActive] = useState(null);
 
   return (
-    <section style={{ background: 'var(--bg-2)' }}>
+    <section id="services" style={{ background: 'var(--bg-2)' }}>
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

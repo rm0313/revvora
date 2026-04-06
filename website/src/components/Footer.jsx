@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <>
       {/* ── FINAL CTA ── */}
-      <section style={{ overflow: 'hidden', position: 'relative', padding: '140px 0' }}>
+      <section id="about" style={{ overflow: 'hidden', position: 'relative', padding: '140px 0' }}>
         {/* Moving gradient bg */}
         <motion.div
           animate={{ rotate: [0, 360] }}

@@ -24,7 +24,7 @@ const STEPS = [
 
 export default function HowItWorks() {
   return (
-    <section>
+    <section id="who-we-serve">
       <div className="container">
 
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 80, alignItems: 'flex-start' }}>
