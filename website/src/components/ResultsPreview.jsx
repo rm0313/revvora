@@ -253,9 +253,9 @@ export default function ResultsPreview() {
                 <p style={{ fontSize: 13, color: '#444', lineHeight: 1.6, maxWidth: 420 }}>
                   We only work with clients we can grow. If you're a fit, you'll know within the first conversation.
                 </p>
-                <button className="btn-outline" style={{ fontSize: 12, padding: '10px 22px', flexShrink: 0 }}>
+                <button className="btn-primary" style={{ fontSize: 13, padding: '12px 28px', flexShrink: 0 }}>
                   Get a Free Audit
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </button>
               </div>
 
