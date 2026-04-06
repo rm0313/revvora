@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import nemoCloud from '../assets/nemo-cloud.webp';
-import oneVision from '../assets/one-vision.webp';
 
 const CASES = [
   {
@@ -16,7 +14,7 @@ const CASES = [
       { label: 'Cost Per Lead Reduced', value: '44%', note: 'within 60 days' },
       { label: 'MQL → SQL Rate', value: '38%', note: 'above industry avg' },
     ],
-    image: nemoCloud,
+    image: null,
     color: '#EA4335',
   },
   {
@@ -31,7 +29,7 @@ const CASES = [
       { label: 'Conversion Rate', value: '6.1%', note: 'cold traffic' },
       { label: 'CAC Improvement', value: '61%', note: 'vs. prior period' },
     ],
-    image: oneVision,
+    image: null,
     color: '#1777AB',
   },
   {
