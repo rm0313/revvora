@@ -8,8 +8,8 @@ const SERVICES = [
   { name: 'PPC', desc: 'Ad spend that returns more than it costs', detail: 'Google Search Ads, Performance Max, Remarketing. Built to convert, not just click. We managed $4,598 in ad spend and generated 337 conversions for Paalm.' },
   { name: 'Social Media Ads', desc: 'Paid social that generates leads, not just likes', detail: 'Meta, Snapchat, LinkedIn, TikTok. Full-funnel: awareness to conversion. Rigorous A/B testing. Wander Nana scaled 300% daily spend while maintaining 2.84 ROAS.' },
   { name: 'CRM & Automations', desc: 'The lead came in. Now what? We build the system that turns it into a customer.', detail: 'CRM setup, lead scoring, email/SMS automation, pipeline reporting. The gap between a lead and a customer is a system. We build it.' },
-  { name: 'Reporting', desc: 'Clear numbers that connect to business outcomes', detail: 'No vanity metrics. No inflated impressions. Monthly dashboards, keyword rankings, revenue attribution. Written in language your leadership understands.' },
-  { name: 'Virtual CMO', desc: 'CMO-level strategy at a fraction of the hire. 20+ hours/month, fully embedded in your business.', detail: 'Your CMO, embedded. 20+ hours/month. We attend meetings, own strategy, lead your team, and report results. Starting at $10,000/month vs $150,000+ full-time.' },
+  { name: 'CRO', desc: 'Most agencies stop at the click. We fix the page that kills the sale.', detail: 'Landing page audits, A/B testing, heatmaps, funnel analysis. We find where prospects drop off and remove every reason not to convert.' },
+  { name: 'Programmatic Ads', desc: 'Data-driven ad buying at scale — display, video, and native, fully automated.', detail: 'Audience targeting, real-time bidding, creative rotation across display, video, and native placements. Built to reach buyers at every stage — without waste.' },
 ];
 
 export default function CoreServices() {
