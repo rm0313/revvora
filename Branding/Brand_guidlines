@@ -1,0 +1,32 @@
+Colors
+Primary:
+#EA4335
+Secondary:
+#1777AB
+Accent:
+#143D55
+Background:
+#D7D6D6
+Text Primary:
+#143D55
+Link:
+#143D55
+Fonts
+Open Sans(body)
+Raleway(heading)
+Inter(unknown)
+Typography
+primary: Open Sans
+heading: Raleway
+h1: 15px
+h2: 60px
+body: 12.75px
+Spacing
+Base Unit:
+4
+Border Radius:
+4px
+Personality
+Tone: professional
+Energy: medium
+Audience: businesses seeking digital marketing services
